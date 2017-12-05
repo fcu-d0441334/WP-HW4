@@ -1,0 +1,72 @@
+<HTML>
+	<HEAD><TITLE>動態下拉式選單</Title></Head>
+	<body>
+		<h1>動態下拉式選單</h1>
+		<h2>請選擇學院</h2>
+		<select id = "college-list" onchange = "collegeChange()"></select>
+		
+		<hr><h2>請選擇科系</h2>
+		<select id = "dept-list">
+			<option>會計學系</option>
+			<option>財稅學系</option>
+			<option>統計學系</option>
+		</select>
+		
+		<p id = "demo"></p>
+		
+		<script>
+			var colleges = ["商學院","工學院","建設學院","國際科技與管理學院","資電學院","人文社會學院","理學院"];
+			var choose1 = ["會計系","統計系","經濟系"];
+			var choose2 = ["機械系","纖複系","工業工程學系"];
+			var choose3 = ["土木系","水利系","土管系"];
+			var choose4 = ["澳洲","美國","西班牙"];
+			var choose5 = ["資訊系","電機系","電子系"];
+			var choose6 = ["中國文學系","外國文學系"];
+			var choose7 = ["應數系","光電系"];
+			var collegeElm = document.getElementById("college-list");
+			var deptElm = document.getElementById("dept-list");
+			populateData(collegeElm, colleges)
+			
+			function collegeChange()
+			{
+				var selIndex = collegeElm.options[collegeElm.selectedIndex].value;
+				switch(selIndex)
+				{
+					case "0":
+						populateData(deptElm, choose1);
+						break;
+					case "1":
+						populateData(deptElm, choose2);
+						break;
+					case "2":
+						populateData(deptElm, choose3);
+						break;
+					case "3":
+						populateData(deptElm, choose4);
+						break;
+					case "4":
+						populateData(deptElm, choose5);
+						break;
+					case "5":
+						populateData(deptElm, choose6);
+						break;
+					case "6":
+						populateData(deptElm, choose7);
+						break;
+					default:
+						console.log("Not.Accept");
+				}
+			}
+			function populateData(selElm, data)
+			{
+				var options = "";
+				for (var i = 0 ; i < data.length ; i++)
+				{
+					options = options + '<option value = "' + i + '">' + data[i] + '</option>';
+				}
+				selElm.innerHTML = options;
+			}
+		</script>
+	</body>
+</Html>
+
